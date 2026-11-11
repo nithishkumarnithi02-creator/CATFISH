@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07111f"><meta name="description" content="CATFISH multilingual personal AI assistant">
+<link rel="manifest" href="/manifest.webmanifest"><link rel="icon" href="/icon.svg" type="image/svg+xml">
+<title>CATFISH AI</title>
+<style>
+:root{color-scheme:dark;--bg:#050b14;--panel:#0b1828;--line:#173c55;--cyan:#38d9f5;--muted:#8aa6bb;--text:#e9f8ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#12375a 0%,#07111f 48%,#040811 100%);color:var(--text);font:15px system-ui,sans-serif;min-height:100dvh}
+.app{max-width:760px;margin:auto;min-height:100dvh;display:flex;flex-direction:column;padding:env(safe-area-inset-top) 14px env(safe-area-inset-bottom)}
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 4px 14px;border-bottom:1px solid #153249}
+.brand{display:flex;align-items:center;gap:11px}.orb{width:42px;height:42px;border:1px solid var(--cyan);border-radius:50%;display:grid;place-items:center;color:var(--cyan);font-weight:800}.brand b{letter-spacing:3px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2px}
+.status{font-size:11px;color:#91e9c8;border:1px solid #245b50;border-radius:20px;padding:6px 10px}
+.hero{text-align:center;padding:23px 0 16px}.ring{height:118px;width:118px;margin:0 auto 12px;border-radius:50%;border:1px solid #2cbbdd;display:grid;place-items:center;box-shadow:0 0 30px #16bce833,inset 0 0 25px #16bce822}.core{font-size:29px;color:var(--cyan)}.hero h1{font-size:17px;letter-spacing:2px;margin:0}.hero p{font-size:12px;color:var(--muted)}
+.quick{display:flex;gap:8px;overflow:auto;padding-bottom:12px}.chip{white-space:nowrap;border:1px solid var(--line);background:#0b1a2b;color:#bcefff;border-radius:20px;padding:9px 13px;font-size:12px}
+.chat{flex:1;min-height:180px;overflow:auto;padding:8px 1px 14px;display:flex;flex-direction:column;gap:12px}.bubble{max-width:88%;padding:12px 14px;border-radius:16px;line-height:1.48;white-space:pre-wrap;overflow-wrap:anywhere}.bot{align-self:flex-start;background:#0c2033;border:1px solid #1b5269;border-bottom-left-radius:4px}.user{align-self:flex-end;background:#145a78;border:1px solid #3286aa;border-bottom-right-radius:4px}.meta{font-size:10px;color:#8aa6bb;margin-bottom:5px}.typing{color:var(--cyan);font-size:12px;padding:5px}
+.composer{border:1px solid #1b4b64;background:#081625;border-radius:18px;padding:9px;display:flex;align-items:flex-end;gap:8px;margin:8px 0 12px}.composer textarea{flex:1;resize:none;max-height:120px;min-height:42px;background:transparent;border:0;outline:0;color:var(--text);font:inherit;padding:10px 4px}.btn{border:1px solid #267b98;background:#0d2a40;color:var(--cyan);width:42px;height:42px;border-radius:13px;font-size:18px}.send{background:linear-gradient(135deg,#0e9fc1,#276bce);color:white;border:0}.bottom{display:flex;justify-content:space-between;align-items:center;padding:0 3px 12px;color:#6e8ba2;font-size:10px}.textbtn{background:none;border:0;color:#8bdcf1;font-size:12px;padding:8px}
+.overlay{position:fixed;inset:0;background:#020711dd;display:none;align-items:flex-end;justify-content:center;padding:12px;z-index:5}.sheet{width:min(100%,600px);background:#0b1929;border:1px solid #1b5269;border-radius:22px;padding:20px;max-height:88dvh;overflow:auto}.sheet h2{margin:0 0 14px}.sheet label{display:block;color:#9bb5c8;font-size:12px;margin:12px 0 6px}.sheet input,.sheet select{width:100%;padding:12px;border-radius:10px;border:1px solid #234b64;background:#06111e;color:white;font:inherit}.sheet .actions{display:flex;gap:10px;margin-top:18px}.sheet .actions button{flex:1;padding:12px;border-radius:12px;border:1px solid #267b98;background:#0d2a40;color:#bcefff}.notice{font-size:11px;color:#89a5b9;line-height:1.5;margin-top:12px}
+</style></head>
+<body><main class="app">
+<header><div class="brand"><div class="orb">CF</div><div><b>CATFISH</b><small>PERSONAL AI SYSTEM</small></div></div><div class="status" id="status">● SETUP REQUIRED</div></header>
+<section class="hero"><div class="ring"><div class="core">✦</div></div><h1>HOW CAN I HELP YOU?</h1><p>தமிழ் · ENGLISH · हिन्दी</p></section>
+<div class="quick"><button class="chip" data-prompt="Vanakkam CATFISH!">Vanakkam</button><button class="chip" data-prompt="Help me with HR and payroll work.">HR & Payroll</button><button class="chip" data-prompt="Explain PF and ESI calculation.">PF / ESI</button><button class="chip" data-prompt="எனக்கு தமிழில் உதவி செய்">தமிழில் பேசு</button></div>
+<section class="chat" id="chat"><div class="bubble bot"><div class="meta">CATFISH · SYSTEM</div>வணக்கம்! I'm CATFISH. Configure the secure backend in Settings to start.</div></section>
+<div id="typing" class="typing" hidden>CATFISH is thinking…</div>
+<div class="composer"><button class="btn" id="mic" title="Speak">🎙</button><textarea id="message" rows="1" placeholder="Message CATFISH…"></textarea><button class="btn send" id="send">➤</button></div>
+<footer class="bottom"><span>LISTENING: ONLY WHEN YOU TAP MIC</span><button class="textbtn" id="settings">⚙ SETTINGS</button></footer></main>
+<div class="overlay" id="overlay"><div class="sheet"><h2>CATFISH Settings</h2>
+<label for="apiUrl">Backend HTTPS URL</label><input id="apiUrl" placeholder="https://your-backend.example.com">
+<label for="token">App access token</label><input id="token" type="password" placeholder="Your CATFISH app token">
+<label for="language">Reply language</label><select id="language"><option value="auto">Auto detect</option><option value="ta">Tamil</option><option value="en">English</option><option value="hi">Hindi</option></select>
+<label><input type="checkbox" id="speak" checked style="width:auto"> Speak replies aloud</label>
+<div class="actions"><button id="close">Close</button><button id="save">Save & Test</button></div>
+<p class="notice">Use the HTTPS address of your deployed backend and the CATFISH app token from your server setup. Never put your OpenAI API key here. Settings are stored on this device only.</p></div></div>
+<script>
+const $=id=>document.getElementById(id), chat=$('chat');let busy=false;
+function bubble(s,who='bot'){let b=document.createElement('div');b.className='bubble '+who;if(who==='bot'){let m=document.createElement('div');m.className='meta';m.textContent='CATFISH · AI';b.append(m)}let t=document.createElement('div');t.textContent=s;b.append(t);chat.append(b);chat.scrollTop=chat.scrollHeight}
+function cfg(){return {url:localStorage.getItem('cf_url')||'',token:localStorage.getItem('cf_token')||'',lang:localStorage.getItem('cf_lang')||'auto'}}
+function status(s){$('status').textContent=s}
+async function test(){let c=cfg();if(!c.url||!c.token){status('● SETUP REQUIRED');return}try{let r=await fetch(c.url.replace(/\/+$/,'')+'/health');if(!r.ok)throw Error();status('● SERVER ONLINE')}catch{status('● SERVER UNREACHABLE')}}
+async function send(s){s=(s||$('message').value).trim();if(!s||busy)return;let c=cfg();if(!c.url||!c.token){bubble('Open Settings and enter your deployed backend HTTPS URL and app token.');return}
+$('message').value='';bubble(s,'user');busy=true;$('typing').hidden=false;$('send').disabled=true;
+try{let r=await fetch(c.url.replace(/\/+$/,'')+'/v1/chat',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+c.token},body:JSON.stringify({message:s,language:c.lang})});let d=await r.json();if(!r.ok)throw Error(d.detail||'Request failed');bubble(d.reply);if($('speak').checked&&'speechSynthesis'in window){speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(d.reply);u.lang=c.lang==='ta'?'ta-IN':c.lang==='hi'?'hi-IN':'en-IN';speechSynthesis.speak(u)}}catch(e){bubble('Connection error: '+e.message+'. Check backend URL and server status.')}finally{busy=false;$('typing').hidden=true;$('send').disabled=false}}
+$('send').onclick=()=>send();$('message').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send()}});document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>send(b.dataset.prompt));
+$('settings').onclick=()=>{$('overlay').style.display='flex';let c=cfg();$('apiUrl').value=c.url;$('token').value=c.token;$('language').value=c.lang;$('speak').checked=localStorage.getItem('cf_speak')!=='false'};$('close').onclick=()=>$('overlay').style.display='none';
+$('save').onclick=async()=>{localStorage.setItem('cf_url',$('apiUrl').value.trim());localStorage.setItem('cf_token',$('token').value.trim());localStorage.setItem('cf_lang',$('language').value);localStorage.setItem('cf_speak',$('speak').checked?'true':'false');$('overlay').style.display='none';await test()};
+$('mic').onclick=()=>{let SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){bubble('Voice recognition is unavailable in this browser. Try Chrome on Android.');return}let r=new SR();r.lang=cfg().lang==='ta'?'ta-IN':cfg().lang==='hi'?'hi-IN':'en-IN';r.onresult=e=>{$('message').value=e.results[0][0].transcript};r.onerror=()=>bubble('Microphone failed. Check browser permission.');r.start()};
+if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));test();
+</script></body></html>
